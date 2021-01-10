@@ -51,6 +51,10 @@ io.on('connection', (socket) => {
     socket.on('update-scores', () => {
       socket.to(roomID).broadcast.emit('update-scores');
     });
+
+    socket.on('myscore', (id, points) => {
+      socket.to(roomID).broadcast.emit('remotescore', id, points);
+    });
   });
 });
 
