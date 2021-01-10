@@ -55,6 +55,10 @@ io.on('connection', (socket) => {
     socket.on('myscore', (id, points) => {
       socket.to(roomID).broadcast.emit('remotescore', id, points);
     });
+
+    socket.on('gameover', () => {
+      socket.to(roomID).broadcast.emit('gameover');
+    })
   });
 });
 
